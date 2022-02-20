@@ -38,7 +38,8 @@ void * thread1(void *arg)
     while (line < 3000000)
     {
         if (pthread_mutex_trylock(&mutex) == 0) {
-            if (counter->value % 100 == 0) {
+            if (counter->value % 100 == 0 &&
+                    line <= 3000000 - 100) {
                 line += 100;
                 mytot += 100;
                 counter->value = counter->value + 100;
